@@ -15,14 +15,6 @@ pipeline {
     }
 
     stages {
-        stage('Setup') {
-            steps {
-                sh 'node -v'
-                sh 'npm -v'
-                sh 'npm install -g pm2'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'npm ci'
