@@ -12,6 +12,7 @@ pipeline {
         S3_ENDPOINT           = credentials('s3-endpoint')
         S3_BUCKET_NAME        = credentials('s3-bucket-name')
         S3_PUBLIC_ENDPOINT    = credentials('s3-public-endpoint')
+        PM2_NAME              = 'my-nuxt-app'
     }
 
     stages {
@@ -54,9 +55,9 @@ pipeline {
                     export S3_BUCKET_NAME="$S3_BUCKET_NAME"
                     export S3_PUBLIC_ENDPOINT="$S3_PUBLIC_ENDPOINT"
 
-                    pm2 stop ${PM2_NAME} || true
-                    pm2 delete ${PM2_NAME} || true
-                    pm2 start npm --name "${PM2_NAME}" -- start
+                    pm2 stop "${PM2_NAME}" || true
+                    pm2 delete "${PM2_NAME}" || true
+                    pm2 start node --name "${PM2_NAME}" -- .output/server/index.mjs
                     pm2 save
                 '''
             }
