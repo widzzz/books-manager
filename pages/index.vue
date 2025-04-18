@@ -166,8 +166,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="book in books" :key="book._id" class="border-2 border-black overflow-hidden hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
             <div class="p-4">
-              <h2 class="text-2xl font-bold mb-2">{{ book.title }}</h2>
-              <p class="text-lg mb-4">
+              <h2 class="text-2xl font-bold mb-2 h-16 overflow-hidden" title="{{ book.title }}">{{ book.title }}</h2>
+              <p class="text-lg mb-4 h-10 overflow-hidden">
                 {{ book.author.join(', ') }}
               </p>
               <img :src="book.image" :alt="book.title" class="w-full h-48 object-cover border-2 border-black mb-4" />
