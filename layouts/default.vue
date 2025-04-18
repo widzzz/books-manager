@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Navigation -->
       <nav class="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mt-8">
@@ -24,7 +24,7 @@
 
       <!-- Main Content -->
       <main class="py-8">
-        <div class="max-w-7xl mx-auto">
+        <div class="max-w-7xl mx-auto bg-white">
           <slot />
         </div>
       </main>
