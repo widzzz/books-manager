@@ -262,23 +262,18 @@ const categoryForm = ref({
 })
 
 const booksInCategory = computed(() => {
-  if (!allBooks.value || allBooks.value.length === 0 || !route.params.slug) return []
+  if (!category.value?.books) return []
   
-  // Show books that currently have this category's slug
-  return allBooks.value.filter(book => {
-    return Array.isArray(book.categories) && 
-           book.categories.includes(route.params.slug as string)
-  })
+  // Use the same books that are displayed in the category details view
+  return category.value.books
 })
 
 const availableBooks = computed(() => {
-  if (!allBooks.value || allBooks.value.length === 0 || !route.params.slug) return []
+  if (!allBooks.value || allBooks.value.length === 0 || !category.value?.books) return []
   
-  // Show books that DO NOT have this category's slug
-  return allBooks.value.filter(book => {
-    const hasCategory = Array.isArray(book.categories) && book.categories.includes(route.params.slug as string)
-    return !hasCategory
-  })
+  // Show books that are not already in the category.books array
+  const categoryBookIds = category.value.books.map(book => book._id)
+  return allBooks.value.filter(book => !categoryBookIds.includes(book._id))
 })
 
 // Add a computed property for displaying books when *not* editing
